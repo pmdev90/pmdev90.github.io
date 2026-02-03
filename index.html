@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Priyanka Bhavsar | Senior Architect</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: radial-gradient(1200px 800px at 10% 10%, #1b1f17 0%, #0f1110 60%);
+            --card: #151816;
+            --accent: #8fae6a;
+            --text-main: #e8eadf;
+            --text-muted: #a7ad9b;
+            --border: #242a22;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+        body { 
+            background: var(--bg);
+            color: var(--text-main); 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+
+        /* Header */
+        header { 
+            position: fixed; width: 100%; top: 0; z-index: 1000;
+            background: rgba(15,17,16,0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-content { height: 80px; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-weight: 800; font-size: 1.2rem; color: var(--accent); }
+
+        .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+        .nav-links a {
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 0.85rem;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+        .nav-links a:hover { color: var(--text-main); }
+
+        .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    z-index: 1100; /* VERY IMPORTANT */
+    background: none;
+    border: none;
+}
+
+.hamburger span {
+    display: block;
+    width: 26px;
+    height: 2px;
+    background-color: var(--accent);
+    transition: 0.3s ease;
+}
+.hamburger.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+
+        /* Hero */
+        .hero { padding: 160px 0 80px; }
+        .hero-label {
+            color: var(--accent);
+            font-weight: 800;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 7vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            max-width: 600px;
+            font-size: 1.2rem;
+            color: var(--text-muted);
+        }
+
+        section { padding: 80px 0; border-top: 1px solid var(--border); }
+        .section-title { font-size: 2rem; font-weight: 800; margin-bottom: 2rem; color: var(--accent); }
+
+        /* Cards */
+        .about-main,
+        .stack-card,
+        .project-card {
+            background: linear-gradient(180deg, #161a17, #121512);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+        
+        .about-main:hover,
+        .stack-card:hover,
+        .expertise-card:hover,
+        .project-card:hover,
+        .ai-github-card:hover{
+            border-color: #8fae6a;
+        }       
+
+        .about-main { padding: 35px; }
+        .about-main p { font-size: 1.05rem; color: var(--text-muted); }
+        .freelance-availability  li{
+            margin-bottom: 10px;
+            list-style: none;
+        }
+        /* ===== Expertise Section ===== */
+
+.expertise-section {
+  padding: 60px 0;
+}
+
+.expertise-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+}
+
+.expertise-card {
+  background: linear-gradient(180deg, #161a17, #111411);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  padding: 30px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.45);
+}
+
+.expertise-title {
+  color: var(--accent);
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin-bottom: 1.25rem;
+  letter-spacing: 0.4px;
+}
+
+.expertise-list {
+  list-style: none;
+}
+
+.expertise-list li {
+  position: relative;
+  padding-left: 26px;
+  margin-bottom: 0.9rem;
+  font-size: 0.95rem;
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+.expertise-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 1px;
+  color: var(--accent);
+  font-weight: 900;
+}
+/* ===== AI GitHub Card ===== */
+
+.ai-github-card {
+  margin-top: 2.5rem;
+  padding: 26px 28px;
+  border-radius: 22px;
+  background: linear-gradient(145deg, #141814, #0f120f);
+  border: 1px solid var(--border);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
+}
+
+.ai-github-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 0.75rem;
+}
+
+.ai-github-header h4 {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+.ai-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 0.6px;
+  background: rgba(140, 190, 92, 0.15);
+  color: var(--accent);
+  border: 1px solid rgba(140, 190, 92, 0.35);
+}
+
+.ai-github-card p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+}
+
+.ai-github-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.ai-github-link:hover {
+  text-decoration: underline;
+}
+
+
+
+        /* Stack */
+        .stack-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .stack-card { padding: 30px; }
+        .stack-card h3 { color: var(--accent); font-size: 0.9rem; margin-bottom: 1.5rem; }
+
+        .pill-container { display: flex; flex-wrap: wrap; gap: 8px; }
+        .pill {
+            background: #1a1f1a;
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        /* Timeline */
+        .experience-timeline { max-width: 900px; margin: auto; }
+        .experience-item { position: relative; padding-left: 45px; margin-bottom: 50px; }
+        .experience-timeline .experience-item:last-child{margin-bottom: 0;}
+        .experience-item::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 10px;
+            bottom: -50px;
+            width: 1px;
+            background: var(--border);
+        }
+
+        .experience-item::after {
+            content: "";
+            position: absolute;
+            left: -6px;
+            top: 4px;
+            width: 9px;
+            height: 9px;
+            background: var(--accent);
+            border-radius: 50%;
+            border: 2px solid #0f1110;
+        }
+
+        .exp-date { color: var(--accent); font-weight: 800; font-size: 0.85rem; }
+        .exp-title { font-size: 1.4rem; font-weight: 800; margin: 5px 0; }
+        .exp-company { color: var(--text-muted); margin-bottom: 15px; }
+
+        .exp-list { list-style: none; }
+        .exp-list li {
+            padding-left: 20px;
+            margin-bottom: 8px;
+            position: relative;
+        }
+
+        .exp-list li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        /* Projects */
+        .project-card { padding: 40px; margin-bottom: 30px; transition: 0.4s; }
+        .project-card:hover { transform: translateY(-6px); border-color: var(--accent); }
+
+        .project-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            align-items: baseline;
+        }
+
+        .project-name { font-size: 1.8rem; font-weight: 800; }
+        .project-link {
+            color: var(--accent);
+            font-weight: 700;
+            text-decoration: none;
+            border-bottom: 2px solid var(--accent);
+        }
+        .project-link:hover{
+            color: #ffffff;
+        }
+
+        /* Footer */
+        footer {
+            padding: 80px 0;
+            text-align: center;
+            background: #0c0e0d;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-cta {
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            font-weight: 800;
+            color: var(--accent);
+            text-decoration: none;
+        }
+        .footer-cta:hover{
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 850px) {
+          .hamburger {
+        display: flex;
+        position: relative;
+    }
+
+    .nav-links {
+        position: fixed;
+        inset: 0;
+        background: var(--bg);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        z-index: 1000;
+        transform: translateX(100%);
+        transition: transform 0.4s ease;
+    }
+
+    .nav-links.active {
+        transform: translateX(0);
+        height: 100vh;
+    }
+
+    .nav-links a {
+        font-size: 1.1rem;
+    }
+
+    header {
+        z-index: 1200;
+    }
+    section{
+        padding: 40px 0;
+        }
+        .project-meta{
+            flex-direction: column;
+            gap: 10px;
+        }
+        .project-card{
+            padding: 20px;
+        }
+        .expertise-section{
+            padding: 40px 0;
+        }
+        footer{
+            padding: 40px 0;
+        }
+    }
+
+    </style>
+</head>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-content">
+            <div class="logo">PRIYANKA BHAVSAR</div>
+            <button class="hamburger" id="hamburger">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#about" onclick="closeMenu()">Narrative</a></li>
+                <li><a href="#stack" onclick="closeMenu()">Stack</a></li>
+                <li><a href="#experience" onclick="closeMenu()">Journey</a></li>
+                <li><a href="#projects" onclick="closeMenu()">Work</a></li>
+                <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
+
+            </ul>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="hero" style="border:none;">
+            <span class="hero-label">Senior Full Stack Architect</span>
+            <h1>8+ Years of Crafting <br>Digital Infrastructure.</h1>
+            <p>Specializing in .NET Core, Azure Cloud, and React JS. I build systems that are as stable as they are scalable.</p>
+        </section>
+
+        <section id="about">
+            <div class="about-main">
+                <h2 class="section-title" style="margin-bottom: 20px;">The Narrative</h2>
+                <p style=" color: var(--text-main); margin-bottom: 1rem;">
+                  I’m a <b>Senior Full Stack Developer with 8+ years of experience</b> designing, developing, and deploying scalable, secure, and cloud-native web applications.
+                </p>
+                <p style=" color: var(--text-main); margin-bottom: 1rem;">
+                I focus on building <b>AI-enabled SaaS platforms, data-driven dashboards, and intelligent business applications</b> using modern frontend frameworks, robust backend systems, and cloud infrastructure.</p>
+                <p style=" color: var(--text-main);">
+                Most professional work is maintained in <b>private repositories</b> due to NDA and client confidentiality.
+
+            </p>
+            <div class="freelance-availability-main-wrapper" style="margin-top: 20px;">
+                <h2 class="section-title" style="margin-bottom: 20px;">Freelance Availability</h2>
+                <ul class="freelance-availability">
+                    <li>✅ Open for Freelance / Contract / Long-term Projects</li>
+                    <li>🌍 Available for Remote Work</li>
+                    <li>🤖 Experience building AI-enhanced applications</li>
+                    <li>📞 Clear communication & regular updates</li>
+                    <li>🔐 NDA & confidentiality respected</li>
+                </ul>
+            </div>
+            </div>
+  </section>
+  <section class="expertise-section">
+  <div class="expertise-grid">
+
+    <div class="expertise-card">
+      <h3 class="expertise-title">What I Do</h3>
+      <ul class="expertise-list">
+        <li>AI-enabled web application development</li>
+        <li>Full Stack development (Frontend + Backend)</li>
+        <li>RESTful APIs & Microservices architecture</li>
+        <li>Intelligent dashboards & analytics systems</li>
+        <li>Cloud deployment, CI/CD & performance optimization</li>
+      </ul>
+    </div>
+
+    <div class="expertise-card">
+      <h3 class="expertise-title">AI & Intelligent Systems (Applied)</h3>
+      <ul class="expertise-list">
+        <li>AI-powered feature integration (automation, insights, recommendations)</li>
+        <li>API-based AI services integration</li>
+        <li>Data-driven decision systems & reporting</li>
+        <li>Workflow automation using AI services</li>
+        <li>Secure AI feature implementation in enterprise applications</li>
+      </ul>
+    </div>
+
+  </div>
+  <div class="ai-github-card">
+  <div class="ai-github-header">
+    <span class="ai-badge">AI</span>
+    <h4>AI Work & Open Source</h4>
+  </div>
+
+  <p>
+    Explore my AI-focused experiments, utilities, and applied intelligence projects
+    on GitHub — including automation, intelligent systems, and modern web solutions.
+  </p>
+
+  <a
+    href="https://github.com/pmdev90"
+    target="_blank"
+    class="ai-github-link"
+  >
+    View AI Projects on GitHub →
+  </a>
+</div>
+
+</section>
+
+        <section id="stack">
+            <h2 class="section-title">Unified Tech Stack</h2>
+            <div class="stack-grid">
+                <div class="stack-card">
+                    <h3>Frontend</h3>
+                    <div class="pill-container">
+                        <span class="pill">React JS</span><span class="pill">Redux</span><span class="pill">Hooks</span>
+                        <span class="pill">TypeScript</span><span class="pill">HTML5</span><span class="pill">CSS3</span>
+                        <span class="pill">SCSS</span><span class="pill">Bootstrap</span><span class="pill">Material UI</span>
+                    </div>
+                </div>
+                <div class="stack-card">
+                    <h3>Backend</h3>
+                    <div class="pill-container">
+                        <span class="pill">.NET Core 6+</span><span class="pill">ASP.NET Web API</span><span class="pill">C#</span>
+                        <span class="pill">EF Core</span><span class="pill">REST APIs</span><span class="pill">Microservices</span>
+                        <span class="pill">Auth & Authz</span>
+                    </div>
+                </div>
+                <div class="stack-card">
+                    <h3>Cloud & DevOps</h3>
+                    <div class="pill-container">
+                        <span class="pill">Microsoft Azure</span><span class="pill">App Services</span><span class="pill">Functions</span>
+                        <span class="pill">Logic Apps</span><span class="pill">Azure AD</span><span class="pill">Azure DevOps</span>
+                        <span class="pill">CI/CD</span><span class="pill">Deployment</span>
+                    </div>
+                </div>
+                <div class="stack-card">
+                    <h3>Data & Practices</h3>
+                    <div class="pill-container">
+                        <span class="pill">SQL Server</span><span class="pill">MongoDB</span><span class="pill">MySQL</span>
+                        <span class="pill">Query Optimization</span><span class="pill">Git/GitHub</span><span class="pill">Agile/Scrum</span>
+                        <span class="pill">Jira</span><span class="pill">Code Reviews</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2 class="section-title">Professional Journey</h2>
+            <div class="experience-timeline">
+                <div class="experience-item">
+                    <span class="exp-date">JULY 2024 — PRESENT</span>
+                    <h3 class="exp-title">Freelance Full Stack Architect</h3>
+                    <span class="exp-company">Global Clients</span>
+                    <ul class="exp-list">
+                        <li>Providing web development to clients globally.</li>
+                        <li>Managing end-to-end projects, from concept to delivery.</li>
+                        <li>Ensuring timely communication, high-quality work, and client satisfaction.</li>
+                    </ul>
+                </div>
+                <div class="experience-item">
+                    <span class="exp-date">JULY 2017 — JULY 2024</span>
+                    <h3 class="exp-title">Senior Full Stack Developer</h3>
+                    <span class="exp-company">Natrix Software Private Limited</span>
+                    <ul class="exp-list">
+                        <li>Designed and developed enterprise-grade web applications using React JS, .NET Core, and Azure.</li>
+                        <li>Built secure RESTful APIs using .NET Core and Entity Framework.</li>
+                        <li>Deployed applications on Azure App Services with CI/CD pipelines via Azure DevOps.</li>
+                    </ul>
+                </div>
+                <div class="experience-item">
+                    <span class="exp-date">Dec 2016 - Jun 2017</span>
+                    <h3 class="exp-title">Software Developer Intern</h3>
+                    <span class="exp-company">Netsol It Solutions Private Limited</span>
+                    <ul class="exp-list">
+                        <li>Assisted in the development of web-based sapplications using ASP.NET and C#</li>
+                        <li>Developed and enhanced frontend components using HTML, CSS, and JavaScript</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2 class="section-title">Selected Projects</h2>
+            
+            <div class="project-card">
+                <div class="project-meta">
+                    <h3 class="project-name">QFRAME (CYBERFORCEQ)</h3>
+                    <a href="https://qframe.cyberforceq.com/" class="project-link" target="_blank">Launch Project &nearr;</a>
+                </div>
+                <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 1.05rem;">QFRAME (CyberForceQ) is a cyber risk assessment and performance
+management platform that calculates organizational scores based on defined metrics and
+actions. It enables structured tracking through dashboards and reports, supports role-based
+access control, and integrates with windows active directory for secure authentication. The
+application leverages Microsoft Graph API to automate Azure AD group and user
+management, as well as Microsoft Teams and Planner integration for collaboration</p>
+                <div class="pill-container">
+                    <span class="pill">.NET MVC</span>
+     
+                    <span class="pill">SQL Server</span>
+                    <span class="pill">React</span>
+                    <span class="pill">Bootstrap</span>
+                    <span class="pill">Microsoft Graph API</span>
+                    <span class="pill">Windows AD</span>
+                    <span class="pill">Azure AD</span>
+                    <span class="pill">Highcharts</span>
+
+                </div>
+            </div>
+
+             <div class="project-card">
+                <div class="project-meta">
+                    <h3 class="project-name">SAGAMY BANK APPLICATION</h3>
+                    <a href="http://13.93.29.145:8081/#/login" class="project-link" target="_blank">Launch Project &nearr;</a>
+                </div>
+                <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 1.05rem;">The Sagamy Bank Application provides comprehensive digital banking
+solutions and delivers a secure, reliable platform for managing core banking operations. The
+system supports live user management, customer onboarding, account creation, fund
+transfers across all banks, and loan and deposit processing. It enables efficient handling of
+customer accounts and transactions while offering reporting and monitoring capabilities to
+ensure compliance, performance, and smooth day-to-day banking operations.</p>
+                <div class="pill-container">
+                    <span class="pill">.NET CORE</span>
+     
+                    <span class="pill">Angular 17</span>
+                    <span class="pill">SQL SERVER</span>
+                    
+                                        
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-meta">
+                    <h3 class="project-name">PHRAMEBOOTH</h3>
+                    <a href="https://www.phramebooth.com/" class="project-link" target="_blank">Launch Project &nearr;</a>
+                </div>
+                <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 1.05rem;">Phramebooth is an open-air photo booth platform that combines modern
+design with cutting-edge technology. It allows guests to capture, share, and print photos
+during events, making it ideal for parties, weddings, and corporate functions.</p>
+                <div class="pill-container">
+                    <span class="pill">React.js</span>
+<span class="pill">Gatsby</span>
+<span class="pill">Apollo Client</span>
+<span class="pill">GraphQL</span>
+<span class="pill">Firebase</span>
+<span class="pill">Firestore</span>
+<span class="pill">Stripe Payments</span>
+<span class="pill">Bootstrap</span>
+<span class="pill">Evergreen UI</span>
+<span class="pill">Highcharts</span>
+
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-meta">
+                    <h3 class="project-name">LEADMASTER CRM</h3>
+                    <a href="https://leadmastercrm.com/" class="project-link" target="_blank">Launch Project &nearr;</a>
+                </div>
+                <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 1.05rem;"> LeadMaster is a Customer Relationship Management (CRM) platform that
+provides sales and marketing solutions, including lead management, marketing automation,
+email marketing, and campaign management. The system helps track sales prospects,
+manage opportunities across different stages (demo, proposal, closed), and optimize the sales
+pipeline.</p>
+                <div class="pill-container">
+               <span class="pill">HTML5</span>
+<span class="pill">CSS3</span>
+<span class="pill">JavaScript</span>
+<span class="pill">jQuery</span>
+<span class="pill">Bootstrap</span>
+<span class="pill">.NET MVC</span>
+
+<span class="pill">MS SQL Server</span>
+
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer id="contact">
+        <div class="container">
+            <p style="color: var(--text-muted); margin-bottom: 1.5rem; font-weight: 700;">AVAILABLE FOR GLOBAL OPPORTUNITIES</p>
+            <a href="mailto:dev.priyanka145@gmail.com" class="footer-cta">dev.priyanka145@gmail.com</a>
+            <p style="margin-top: 2rem; font-size: 0.8rem; color: var(--text-muted);">&copy; 2026 Priyanka Bhavsar | Senior Full Stack Architect</p>
+        </div>
+    </footer>
+
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        function closeMenu() {
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('active');
+        }
+        const toggle = document.getElementById("themeToggle");
+const root = document.documentElement;
+
+const savedTheme = localStorage.getItem("theme");
+if (savedTheme) root.setAttribute("data-theme", savedTheme);
+
+toggle.addEventListener("click", () => {
+  const current = root.getAttribute("data-theme");
+  const next = current === "dark" ? "light" : "dark";
+  root.setAttribute("data-theme", next);
+  localStorage.setItem("theme", next);
+});
+    </script>
+</body>
+</html>
